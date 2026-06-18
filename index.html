@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHOTOTEDTIORSTARASTHA</title>
+</head>
+<body>
+    
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#f5f5f5;
+background:linear-gradient(#426886,#f5f5f5)
+}
+
+header{
+background:#111827;
+color:white;
+padding:20px;
+text-align:center;
+}
+
+.hero{
+padding:50px 20px;
+text-align:center;
+}
+
+.hero h1{
+font-size:3rem;
+margin-bottom:10px;
+}
+
+.hero p{
+color:#426886;
+margin-bottom:20px;
+}
+
+.upload-btn{
+background:#000102;
+color:white;
+padding:24px 48px;
+border:none;
+border-radius:20px;
+cursor:pointer;
+}
+
+.container{
+max-width:1200px;
+margin:auto;
+padding:20px;
+}
+
+.tools{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+margin-top:30px;
+}
+
+.card{
+background:white;
+padding:20px;
+border-radius:12px;
+box-shadow:0 2px 8px rgba(0,0,0,0.1);
+text-align:center;
+}
+
+.card button{
+margin-top:10px;
+padding:10px 15px;
+background:#111827;
+color:white;
+border:none;
+border-radius:6px;
+cursor:pointer;
+}
+
+.preview{
+margin-top:40px;
+text-align:center;
+}
+
+.preview img{
+max-width:100%;
+max-height:500px;
+border-radius:10px;
+box-shadow:0 2px 10px rgba(0,0,0,.2);
+}
+footer{
+background:#020305;
+color:rgb(255, 255, 255);
+padding:20px;
+text-align:center;
+top marging:0;
+bottom marging:0;
+height:120px;
+}
+
+</style>
+</head>
+
+<body>
+<header>
+<h1>AI Photo Studio with STARASTHA</h1>
+<p>Enhance, Sharpen, Remove Background & Generate AI Images</p>
+</header>
+
+<section class="hero">
+<h1>Transform Photos with AI</h1>
+<p>Upload your image and start editing instantly.</p>
+
+<input type="file" id="file" accept="image/*"><br><br><height= "100"/>
+
+<div class="controls">
+<label>Brightness <input type="range" id="brightness" min="50" max="200" value="100"></label>
+<label>Contrast <input type="range" id="contrast" min="50" max="200" value="100"></label>
+<label>Saturation <input type="range" id="saturation" min="0" max="200" value="100"></label>
+<label>Sharpness (visual) <input type="range" id="sharpness" min="0" max="200" value="100"></label>
+<label>Enhancing (visual) <input type="range" id="Enhancing" min="0" max="200" value="100"></label>
+</div>
+
+<canvas id="canvas"></canvas><br><br>
+<button id="download">Download Enhanced Image</button><height= "100"/>
+
+<script>
+const file=document.getElementById('file');
+const canvas=document.getElementById('canvas');
+const ctx=canvas.getContext('2d');
+const controls=['brightness','contrast','saturation','sharpness'];
+let img=new Image();
+
+function render(){
+ if(!img.src) return;
+ canvas.width=img.width;
+ canvas.height=img.height;
+ ctx.filter=`brightness(${brightness.value}%) contrast(${contrast.value}%)
+             saturate(${saturation.value}%)`;
+ ctx.drawImage(img,0,0);
+}
+
+file.onchange=e=>{
+ const f=e.target.files[0];
+ if(!f) return;
+ const r=new FileReader();
+ r.onload=()=>{
+   img=new Image();
+   img.onload=render;
+   img.src=r.result;
+ };
+ r.readAsDataURL(f);
+};
+
+controls.forEach(id=>document.getElementById(id).oninput=render);
+
+download.onclick=()=>{
+ const a=document.createElement('a');
+ a.href=canvas.toDataURL('image/png');
+ a.download='enhanced.png';
+ a.click();
+ };
+</script>
+</body>
+</html>
+<br>
+<br>
+<br>
+
+<div>
+  <input type ="checkbox" value="Good" name="class" reaction="1">Good
+<input type ="checkbox" value="Nice" name="class" reaction="2">Nice
+<input type ="checkbox" value="Outstanding" name="class" reaction="3">Outstanding
+</div>
+
+ <b><p style="text-align:center;">Free online Photo Editor with AI tools</p><height= "100"/></b> 
+<p style="text-align:center;">Edit photos, create designs, and generate visuals with intuitive tools and built-in AI capabilities. From quick touch-ups to full creative projects, everything works together so you can shape every image exactly the way you want.</p><height="100/>"
+
+<footer>
+<h1>life is Editing</h1>
+<p>"The real work of an editor is to make something better."</p>
+</footer>
+
+</body>
+</html>
